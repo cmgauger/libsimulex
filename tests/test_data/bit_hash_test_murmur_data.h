@@ -1,0 +1,137 @@
+#ifndef BIT_HASH_TEST_MURMUR_DATA_H
+#define BIT_HASH_TEST_MURMUR_DATA_H
+/*
+ * Copyright (c) 2025 Christian Gauger-Cosgrove
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice (including the next
+ * paragraph) shall be included in all copies or substantial portions of the
+ * Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
+#define	MURMUR_TESTS	30
+
+const struct {
+	uint32_t	 seed;
+	uint32_t	 murmurhash1;
+	uint32_t	 murmurhash2;
+	uint32_t	 murmurhash2a;
+	uint32_t	 murmurhash3;
+	size_t	 length;
+	uint8_t	 vector[256];
+} murmur_test_data[MURMUR_TESTS] = {
+	{UINT32_C(0x00000000), UINT32_C(0x00000000), UINT32_C(0x00000000),
+	    UINT32_C(0x00000000), UINT32_C(0x00000000),   0, {0}},
+	{UINT32_C(0x00000001), UINT32_C(0x8F5A8D63), UINT32_C(0x5BD15E36),
+	    UINT32_C(0xEE23D1B5), UINT32_C(0x514E28B7),   0, {0}},
+	{UINT32_C(0xFFFFFFFF), UINT32_C(0x7A3F4F7E), UINT32_C(0xB35966B0),
+	    UINT32_C(0xEC99FD6C), UINT32_C(0x81F16F39),   0, {0}},
+	{UINT32_C(0x00000000), UINT32_C(0x8837CF3E), UINT32_C(0xE94E6EBD),
+	    UINT32_C(0xB2408361), UINT32_C(0x514E28B7),   1,
+	    {UINT8_C(0x00)}},
+	{UINT32_C(0x00000000), UINT32_C(0x1FF4F1E7), UINT32_C(0xD29EDD7A),
+	    UINT32_C(0xAB332279), UINT32_C(0x30F4C306),   2,
+	    {UINT8_C(0x00), UINT8_C(0x00)}},
+	{UINT32_C(0x00000000), UINT32_C(0x8955FEFF), UINT32_C(0x3F716198),
+	    UINT32_C(0x267B2748), UINT32_C(0x85F0B427),   3,
+	    {UINT8_C(0x00), UINT8_C(0x00), UINT8_C(0x00)}},
+	{UINT32_C(0x00000000), UINT32_C(0xEB4ED66A), UINT32_C(0xB469B2CC),
+	    UINT32_C(0x24A83904), UINT32_C(0x2362F9DE),   4,
+	    {UINT8_C(0x00), UINT8_C(0x00), UINT8_C(0x00), UINT8_C(0x00)}},
+	{UINT32_C(0x00000000), UINT32_C(0x219738A7), UINT32_C(0x14ACB3DA),
+	    UINT32_C(0xA2ADDCA6), UINT32_C(0x76293B50),   4,
+	    {UINT8_C(0xFF), UINT8_C(0xFF), UINT8_C(0xFF), UINT8_C(0xFF)}},
+	{UINT32_C(0x00000000), UINT32_C(0x2940649F), UINT32_C(0xE511705C),
+	    UINT32_C(0x6F346C08), UINT32_C(0x72661CF4),   1,
+	    {UINT8_C(0x21)}},
+	{UINT32_C(0x00000000), UINT32_C(0x359FFC84), UINT32_C(0xE07C88A2),
+	    UINT32_C(0x8CFCD78A), UINT32_C(0xA0F7B07A),   2,
+	    {UINT8_C(0x21), UINT8_C(0x43)}},
+	{UINT32_C(0x00000000), UINT32_C(0x28B2CCFA), UINT32_C(0x19D01D52),
+	    UINT32_C(0x3EA648C6), UINT32_C(0x7E4A8634),   3,
+	    {UINT8_C(0x21), UINT8_C(0x43), UINT8_C(0x65)}},
+	{UINT32_C(0x00000000), UINT32_C(0x2D0F8B30), UINT32_C(0x566FFB60),
+	    UINT32_C(0xDEF5E481), UINT32_C(0xF55B516B),   4,
+	    {UINT8_C(0x21), UINT8_C(0x43), UINT8_C(0x65), UINT8_C(0x87)}},
+	{UINT32_C(0x01565682), UINT32_C(0x735A0A62), UINT32_C(0x1D9A4D10),
+	    UINT32_C(0x9A239971), UINT32_C(0xC02CE61F),   1,
+	    {UINT8_C(0x21)}},
+	{UINT32_C(0x01565682), UINT32_C(0xCD3EBC93), UINT32_C(0x1849BAE2),
+	    UINT32_C(0x0EA8C2CF), UINT32_C(0x7241DD17),   2,
+	    {UINT8_C(0x21), UINT8_C(0x43)}},
+	{UINT32_C(0x01565682), UINT32_C(0x9CA7A64A), UINT32_C(0x2A24A48C),
+	    UINT32_C(0xF802FD50), UINT32_C(0xF5CFC93B),   3,
+	    {UINT8_C(0x21), UINT8_C(0x43), UINT8_C(0x65)}},
+	{UINT32_C(0x01565682), UINT32_C(0x4559A42C), UINT32_C(0x84AEE740),
+	    UINT32_C(0x6187908C), UINT32_C(0x8248B0DE),   4,
+	    {UINT8_C(0x21), UINT8_C(0x43), UINT8_C(0x65), UINT8_C(0x87)}},
+	{UINT32_C(0x00000000), UINT32_C(0xE8A1FF66), UINT32_C(0xAAE9DFBE),
+	    UINT32_C(0x1F5F287B), UINT32_C(0x6EFDED50),   1,
+	    {UINT8_C(0x5D)}},
+	{UINT32_C(0x00000000), UINT32_C(0xFD0D3384), UINT32_C(0x81335BB7),
+	    UINT32_C(0x86287FEE), UINT32_C(0xFFEFB633),   2,
+	    {UINT8_C(0x5D), UINT8_C(0x30)}},
+	{UINT32_C(0x00000000), UINT32_C(0xF48D5187), UINT32_C(0xFD702C94),
+	    UINT32_C(0xF424DEBD), UINT32_C(0x8D3FAC88),   3,
+	    {UINT8_C(0x5D), UINT8_C(0x30), UINT8_C(0xF6)}},
+	{UINT32_C(0x00000000), UINT32_C(0x55302182), UINT32_C(0xE9D716E6),
+	    UINT32_C(0x227BC6E7), UINT32_C(0x11308127),   4,
+	    {UINT8_C(0x5D), UINT8_C(0x30), UINT8_C(0xF6), UINT8_C(0xF7)}},
+	{UINT32_C(0x0189BD00), UINT32_C(0x8DA8836D), UINT32_C(0x32C68E62),
+	    UINT32_C(0x89F1C477), UINT32_C(0xB1B41968),   1,
+	    {UINT8_C(0x5D)}},
+	{UINT32_C(0x0189BD00), UINT32_C(0x1684C559), UINT32_C(0xF138680D),
+	    UINT32_C(0x3DB45BE3), UINT32_C(0x60D4803A),   2,
+	    {UINT8_C(0x5D), UINT8_C(0x30)}},
+	{UINT32_C(0x0189BD00), UINT32_C(0x301496D6), UINT32_C(0xC54DBAE0),
+	    UINT32_C(0xB4247462), UINT32_C(0x61D88D32),   3,
+	    {UINT8_C(0x5D), UINT8_C(0x30), UINT8_C(0xF6)}},
+	{UINT32_C(0x0189BD00), UINT32_C(0xBD1509E5), UINT32_C(0x4170E52B),
+	    UINT32_C(0x0557EB56), UINT32_C(0x942BB920),   4,
+	    {UINT8_C(0x5D), UINT8_C(0x30), UINT8_C(0xF6), UINT8_C(0xF7)}},
+	{UINT32_C(0x00000000), UINT32_C(0x52891233), UINT32_C(0x81A2BF9E),
+	    UINT32_C(0xE7BC13A2), UINT32_C(0x9C8B9A70),  16,
+	    {UINT8_C(0x0E), UINT8_C(0xE8), UINT8_C(0xC8), UINT8_C(0x05),
+	    UINT8_C(0xFE), UINT8_C(0x29), UINT8_C(0xF3), UINT8_C(0x94),
+	    UINT8_C(0xAD), UINT8_C(0xD5), UINT8_C(0x52), UINT8_C(0xE7),
+	    UINT8_C(0x2B), UINT8_C(0x1E), UINT8_C(0x01), UINT8_C(0x62)}},
+	{UINT32_C(0x1ADA9835), UINT32_C(0xDCDD0D9E), UINT32_C(0x4FF6EB2C),
+	    UINT32_C(0x43280BFF), UINT32_C(0x2E8238D0),  16,
+	    {UINT8_C(0x0E), UINT8_C(0xE8), UINT8_C(0xC8), UINT8_C(0x05),
+	    UINT8_C(0xFE), UINT8_C(0x29), UINT8_C(0xF3), UINT8_C(0x94),
+	    UINT8_C(0xAD), UINT8_C(0xD5), UINT8_C(0x52), UINT8_C(0xE7),
+	    UINT8_C(0x2B), UINT8_C(0x1E), UINT8_C(0x01), UINT8_C(0x62)}},
+	{UINT32_C(0xEA4B6E4D), UINT32_C(0x5D57B264), UINT32_C(0xCDD73713),
+	    UINT32_C(0xE3F2E045), UINT32_C(0x343BCA04),  44,
+	    "The quick brown fox jumps over the lazy dog."},
+	{UINT32_C(0x1ADA9814), UINT32_C(0x3E3A935C), UINT32_C(0xC2981A34),
+	    UINT32_C(0x755D805B), UINT32_C(0x51BED206),  86,
+	    "Through freedom, something advantageous, and have no independent "
+	    "existence outside it."},
+	{UINT32_C(0x005A1107), UINT32_C(0x4EECDBCC), UINT32_C(0xE9AFF017),
+	    UINT32_C(0x35D60CFF), UINT32_C(0x241AC06B), 161,
+	    "We misinterpret our empirical concept is a matter of indifference "
+	    "whether i say, the contradictory opposition of the most learned "
+	    "can claim no advantage over it."},
+	{UINT32_C(0x1ADA9814), UINT32_C(0xD4B45827), UINT32_C(0x1C30310C),
+	    UINT32_C(0x58D9FD04), UINT32_C(0xCC57A9F0), 253,
+	    "Prohibited from, presenting for trial the two propositions, that "
+	    "god--probably conceived by him as simply the logical criterion of "
+	    "truth, will decide nothing in regard to these problems can be "
+	    "clearly and distinctly provided in given similar intuitions."}
+};
+
+#endif /* BIT_HASH_TEST_MURMUR_DATA_H */

@@ -13,10 +13,93 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Test Data">
+      <UniqueIdentifier>{821d449b-0d9a-4d1d-a279-2b87f22139bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="bit_hash_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="date_time_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mdx_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="prng_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="xchacha20_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="util_test.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="bit_hash_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="date_time_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="mdx_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="prng_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="xchacha20_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="util_test.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\bit_hash_test_fnv_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\bit_hash_test_murmur_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\bit_hash_test_purdy_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\date_time_test_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\prng_test_lcg16_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\prng_test_lcg32_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\prng_test_lcg64_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\prng_test_mt32_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\prng_test_sm64_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\prng_test_well32_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\util_test_bounded_rand32_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\util_test_bounded_rand64_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\util_test_shuffle32_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
+    <ClInclude Include="test_data\util_test_shuffle64_data.h">
+      <Filter>Header Files\Test Data</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

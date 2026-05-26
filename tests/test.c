@@ -38,6 +38,14 @@
 #include <CUnit/Basic.h>
 #include <CUnit/Console.h>
 
+#include "bit_hash_test.h"
+#include "date_time_test.h"
+#include "mdx_test.h"
+#include "prng_test.h"
+#include "util_test.h"
+#include "xchacha20_test.h"
+
+
 #define	TEST_VER_MAJ	0
 #define	TEST_VER_MIN	0
 #define	TEST_VER_PAT	1
@@ -66,6 +74,13 @@ struct test_suite {
 static void	 version(char *);
 static void	 usage(void *, void *, void *, char *);
 static int	 test(enum MODE, enum LEVEL);
+static CU_ErrorCode	 setup_bit_hash_suite(void);
+static CU_ErrorCode	 setup_date_time_suite(void);
+static CU_ErrorCode	 setup_mdx_suite(void);
+static CU_ErrorCode	 setup_prng_suite(void);
+static CU_ErrorCode	 setup_util_suite(void);
+static CU_ErrorCode	 setup_xchacha20_suite(void);
+
 
 int
 main(int argc, char *argv[]) {
@@ -233,6 +248,12 @@ usage(void *table_batch, void *table_interactive, void *table_misc,
 static int
 test(enum MODE mode, enum LEVEL level) {
 	const struct test_setup_function setup[] = {
+		{setup_bit_hash_suite, "bit-hash"},
+		{setup_date_time_suite, "date-time"},
+		{setup_mdx_suite, "mdx"},
+		{setup_prng_suite, "prng"},
+		{setup_util_suite, "util"},
+		{setup_xchacha20_suite, "xchacha20"},
 		{NULL, NULL}
 	};
 	CU_ErrorCode ec;
@@ -320,4 +341,306 @@ TEST_CLEANUP:
 	/* Leave */
 TEST_RETURN:
 	return (ec != CUE_SUCCESS);
+}
+static CU_ErrorCode
+setup_bit_hash_suite(void) {
+	const struct test_suite test[] = {
+		{test_fnv32, "32-bit FNV-1/FNV-1a Test"},
+		{test_fnv64, "64-bit FNV-1/FNV-1a Test"},
+		{test_murmur1, "MurmurHash1 Test"},
+		{test_murmur2, "MurmurHash2/MurmurHash2A Test"},
+		{test_murmur3, "MurmurHash3 Test"},
+		{test_purdy, "Purdy Hash Test"},
+		{NULL, NULL}
+	};
+	CU_pSuite bit_hash_suite;
+	CU_ErrorCode ec;
+	int i;
+
+	/* Value pre-initialization */
+	ec = CUE_SUCCESS;
+	i = 0;
+
+	/* Initialize the test suite */
+	LOG_INFO("adding 'bit-hash' test suite", NULL);
+	bit_hash_suite = CU_add_suite("bit-hash Suite", init_bit_hash_suite,
+	    clean_bit_hash_suite);
+	if (bit_hash_suite == NULL) {
+		LOG_ERROR("failure adding 'bit-hash' test suite: %s",
+		    CU_get_error_msg());
+		ec = CU_get_error();
+		goto SUITE_EXIT;
+	}
+
+	/* Add the tests */
+	LOG_INFO("adding 'bit-hash' tests", NULL);
+	while (test[i].test != NULL) {
+		if (CU_add_test(bit_hash_suite, test[i].name, test[i].test) ==
+		    NULL) {
+			LOG_ERROR("failure adding test: %s",
+			    CU_get_error_msg());
+			ec = CU_get_error();
+			goto SUITE_EXIT;
+		}
+
+		++i;
+	}
+
+SUITE_EXIT:
+	return ec;
+}
+
+static CU_ErrorCode
+setup_date_time_suite(void) {
+	const struct test_suite test[] = {
+		{test_valid_date, "valid_date Test"},
+		{test_valid_time, "valid_time Test"},
+		{test_abs2tm, "abs2tm Test"},
+		{test_tm2abs, "tm2abs Test"},
+		{test_abs2mjd, "abs2mjd Test"},
+		{test_mjd2abs, "mjd2abs Test"},
+		{test_abs2lil, "abs2lil Test"},
+		{test_lil2abs, "lil2abs Test"},
+		{test_abs2xcl, "abs2xcl Test"},
+		{test_xcl2abs, "xcl2abs Test"},
+		{test_tm2rt_date, "tm2rt_date Test"},
+		{test_tm2rt_time, "tm2rt_time Test"},
+		{test_rt2tm_date, "rt2tm_date Test"},
+		{test_rt2tm_time, "rt2tm_time Test"},
+		{test_tm2rsts_date, "tm2rsts_date Test"},
+		{test_tm2rsts_time, "tm2rsts_time Test"},
+		{test_rsts2tm_date, "rsts2tm_date Test"},
+		{test_rsts2tm_time, "rsts2tm_time Test"},
+		{test_tm2dos_date, "tm2dos_date Test"},
+		{test_tm2dos_time, "tm2dos_time Test"},
+		{test_dos2tm_date, "dos2tm_date Test"},
+		{test_dos2tm_time, "dos2tm_time Test"},
+		{test_tm2cpm_date, "tm2cpm_date Test"},
+		{test_tm2cpm_time, "tm2cpm_time Test"},
+		{test_cpm2tm_date, "cpm2tm_date Test"},
+		{test_cpm2tm_time, "cpm2tm_time Test"},
+		{NULL, NULL}
+	};
+	CU_pSuite date_time_suite;
+	CU_ErrorCode ec;
+	int i;
+
+	/* Value pre-initialization */
+	ec = CUE_SUCCESS;
+	i = 0;
+
+	/* Initialize the test suite */
+	LOG_INFO("adding 'date-time' test suite", NULL);
+	date_time_suite = CU_add_suite("date-time Suite", init_date_time_suite,
+	    clean_date_time_suite);
+	if (date_time_suite == NULL) {
+		LOG_ERROR("failure adding 'date-time' test suite: %s",
+		    CU_get_error_msg());
+		ec = CU_get_error();
+		goto SUITE_EXIT;
+	}
+
+	/* Add the tests */
+	LOG_INFO("adding 'date-time' tests", NULL);
+	while (test[i].test != NULL) {
+		if (CU_add_test(date_time_suite, test[i].name, test[i].test) ==
+		    NULL) {
+			LOG_ERROR("failure adding test: %s",
+			    CU_get_error_msg());
+			ec = CU_get_error();
+			goto SUITE_EXIT;
+		}
+
+		++i;
+	}
+
+SUITE_EXIT:
+	return ec;
+}
+
+static CU_ErrorCode
+setup_mdx_suite(void) {
+	const struct test_suite test[] = {
+		{test_mdx_init_size_destroy, "MDx Initializer, Digest Size, "
+		   "and Destructor Test"},
+		{test_mdx_md2, "MDx RFC 1319 (MD2) Test"},
+		{test_mdx_md4, "MDx RFC 1320 (MD4) Test"},
+		{test_mdx_md5, "MDx RFC 1321 (MD5) Test"},
+		{NULL, NULL}
+	};
+	CU_pSuite mdx_suite;
+	CU_ErrorCode ec;
+	int i;
+
+	/* Value pre-initialization */
+	ec = CUE_SUCCESS;
+	i = 0;
+
+	/* Initialize the test suite */
+	LOG_INFO("adding 'mdx' test suite", NULL);
+	mdx_suite = CU_add_suite("mdx Suite", init_mdx_suite, clean_mdx_suite);
+	if (mdx_suite == NULL) {
+		LOG_ERROR("failure adding 'mdx' test suite: %s",
+		    CU_get_error_msg());
+		ec = CU_get_error();
+		goto SUITE_EXIT;
+	}
+
+	/* Add the tests */
+	LOG_INFO("adding 'util' tests", NULL);
+	while (test[i].test != NULL) {
+		if (CU_add_test(mdx_suite, test[i].name, test[i].test) ==
+		    NULL) {
+			LOG_ERROR("failure adding test: %s",
+			    CU_get_error_msg());
+			ec = CU_get_error();
+			goto SUITE_EXIT;
+		}
+
+		++i;
+	}
+
+SUITE_EXIT:
+	return ec;
+}
+
+static CU_ErrorCode
+setup_prng_suite(void) {
+	const struct test_suite test[] = {
+		{test_lcg16, "16-bit LCG Test"},
+		{test_lcg32, "32-bit LCG Test"},
+		{test_mt32, "Mersenne Twister Test"},
+		{test_well32, "WELL Test"},
+		{test_lcg64, "64-bit LCG Test"},
+		{test_sm64, "SplitMix64 Test"},
+		{NULL, NULL}
+	};
+	CU_pSuite prng_suite;
+	CU_ErrorCode ec;
+	int i;
+
+	/* Value pre-initialization */
+	ec = CUE_SUCCESS;
+	i = 0;
+
+	/* Initialize the test suite */
+	LOG_INFO("adding 'prng' test suite", NULL);
+	prng_suite = CU_add_suite("prng Suite", init_prng_suite,
+	    clean_prng_suite);
+	if (prng_suite == NULL) {
+		LOG_ERROR("failure adding 'prng' test suite: %s",
+		    CU_get_error_msg());
+		ec = CU_get_error();
+		goto SUITE_EXIT;
+	}
+
+	/* Add the tests */
+	LOG_INFO("adding 'prng' tests", NULL);
+	while (test[i].test != NULL) {
+		if (CU_add_test(prng_suite, test[i].name, test[i].test) ==
+		    NULL) {
+			LOG_ERROR("failure adding test: %s",
+			    CU_get_error_msg());
+			ec = CU_get_error();
+			goto SUITE_EXIT;
+		}
+
+		++i;
+	}
+
+SUITE_EXIT:
+	return ec;
+}
+
+static CU_ErrorCode
+setup_util_suite(void) {
+	const struct test_suite test[] = {
+		{test_bounded_rand32, "bounded_rand32 Test"},
+		{test_bounded_rand64, "bounded_rand64 Test"},
+		{test_shuffle32, "shuffle32 Test"},
+		{test_shuffle64, "shuffle64 Test"},
+		{NULL, NULL}
+	};
+	CU_pSuite util_suite;
+	CU_ErrorCode ec;
+	int i;
+
+	/* Value pre-initialization */
+	ec = CUE_SUCCESS;
+	i = 0;
+
+	/* Initialize the test suite */
+	LOG_INFO("adding 'util' test suite", NULL);
+	util_suite = CU_add_suite("util Suite", init_util_suite,
+	    clean_util_suite);
+	if (util_suite == NULL) {
+		LOG_ERROR("failure adding 'util' test suite: %s",
+		    CU_get_error_msg());
+		ec = CU_get_error();
+		goto SUITE_EXIT;
+	}
+
+	/* Add the tests */
+	LOG_INFO("adding 'util' tests", NULL);
+	while (test[i].test != NULL) {
+		if (CU_add_test(util_suite, test[i].name, test[i].test) ==
+		    NULL) {
+			LOG_ERROR("failure adding test: %s",
+			    CU_get_error_msg());
+			ec = CU_get_error();
+			goto SUITE_EXIT;
+		}
+
+		++i;
+	}
+
+SUITE_EXIT:
+	return ec;
+}
+
+static CU_ErrorCode
+setup_xchacha20_suite(void) {
+	const struct test_suite test[] = {
+		{test_xchacha20_init_destroy, "xchacha20_init & "
+		    "xchacha20_destroy Test"},
+		{test_xchacha20_param, "xchacha20_parameter_length Test"},
+		{test_xchacha20_rand32, "xchacha20_rand32 Test"},
+		{test_xchacha20_rand64, "xchacha20_rand64 Test"},
+		{NULL, NULL}
+	};
+	CU_pSuite xchacha20_suite;
+	CU_ErrorCode ec;
+	int i;
+
+	/* Value pre-initialization */
+	ec = CUE_SUCCESS;
+	i = 0;
+
+	/* Initialize the test suite */
+	LOG_INFO("adding 'xchacha20' test suite", NULL);
+	xchacha20_suite = CU_add_suite("xchacha20 Suite", init_xchacha20_suite,
+	    clean_xchacha20_suite);
+	if (xchacha20_suite == NULL) {
+		LOG_ERROR("failure adding 'xchacha20' test suite: %s",
+		    CU_get_error_msg());
+		ec = CU_get_error();
+		goto SUITE_EXIT;
+	}
+
+	/* Add the tests */
+	LOG_INFO("adding 'xchacha20' tests", NULL);
+	while (test[i].test != NULL) {
+		if (CU_add_test(xchacha20_suite, test[i].name, test[i].test) ==
+		    NULL) {
+			LOG_ERROR("failure adding test: %s",
+			    CU_get_error_msg());
+			ec = CU_get_error();
+			goto SUITE_EXIT;
+		}
+
+		++i;
+	}
+
+SUITE_EXIT:
+	return ec;
 }

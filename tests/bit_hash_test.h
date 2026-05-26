@@ -1,7 +1,7 @@
-#ifndef CHACHA_H
-#define CHACHA_H
+#ifndef BIT_HASH_TEST_H
+#define BIT_HASH_TEST_H
 /*
- * Copyright (c) 2022 Christian Gauger-Cosgrove
+ * Copyright (c) 2025 Christian Gauger-Cosgrove
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -23,15 +23,20 @@
  * SOFTWARE.
  */
 /**
- * \file	xchacha20.h
+ * \file	bit_hash_test.h
  * \copyright	MIT
- * \date	2022
+ * \date	2025
  * \author	Christian Gauger-Cosgrove
- * \version	1.0.0
+ * \version	0.0.1
  */
-#include <stdint.h>
 
+int	 init_bit_hash_suite(void);
+int	 clean_bit_hash_suite(void);
+void	 test_fnv32(void);
+void	 test_fnv64(void);
+void	 test_murmur1(void);
+void	 test_murmur2(void);
+void	 test_murmur3(void);
+void	 test_purdy(void);
 
-
-
-#endif /* CHACHA_H */
+#endif /* BIT_HASH_TEST_H */
