@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <prng.h>
+#include <simulex/prng.h>
 
 /**
  * \brief Computes the bit-wise left rotation of its arguments

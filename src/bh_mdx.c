@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <bit_hash.h>
+#include <simulex/bit_hash.h>
 
 #define	ROTL(X,Y,Z)	(((X) << (Y)) | ((X) >> (Z - (Y))))
 #define MD4_F(X,Y,Z)	(((X) & (Y)) | ((~X) & (Z)))

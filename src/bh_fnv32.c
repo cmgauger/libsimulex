@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <bit_hash.h>
+#include <simulex/bit_hash.h>
 
 /** \cond */
 #define	FNV_32_PRIME	UINT32_C(0x01000193)

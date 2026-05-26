@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <prng.h>
+#include <simulex/prng.h>
 
 /** \cond */
 #define	MT_N	624

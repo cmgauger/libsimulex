@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <bit_hash.h>
+#include <simulex/bit_hash.h>
 
 /** \cond */
 #define	CRC_TABLE_SIZE	256

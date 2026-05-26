@@ -125,13 +125,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\bit_hash.h">
+    <ClInclude Include="..\include\simulex\bit_hash.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\prng.h">
+    <ClInclude Include="..\include\simulex\date_time.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\include\util.h">
+    <ClInclude Include="..\include\simulex\prng.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\simulex\util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

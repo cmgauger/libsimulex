@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <bit_hash.h>
+#include <simulex/bit_hash.h>
 
 /** \cond */
 #define	MURMUR1_MAGIC	UINT32_C(0xC6A4a793)

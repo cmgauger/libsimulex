@@ -31,8 +31,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <bit_hash.h>
-#include <prng.h>
+#include <simulex/bit_hash.h>
+#include <simulex/prng.h>
 
 #define	MASKU		(UINT32_C(0xFFFFFFFF) >> (32 - P))
 #define	MASKL		(~MASKU)

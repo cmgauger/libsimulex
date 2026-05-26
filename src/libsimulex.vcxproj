@@ -57,9 +57,10 @@
     <ClCompile Include="prng_xchacha20.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\bit_hash.h" />
-    <ClInclude Include="..\include\prng.h" />
-    <ClInclude Include="..\include\util.h" />
+    <ClInclude Include="..\include\simulex\bit_hash.h" />
+    <ClInclude Include="..\include\simulex\date_time.h" />
+    <ClInclude Include="..\include\simulex\prng.h" />
+    <ClInclude Include="..\include\simulex\util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0ADBC6BB-D7DF-412C-9317-E9EDFAE59618}</ProjectGuid>

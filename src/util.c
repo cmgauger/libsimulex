@@ -35,8 +35,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <bit_hash.h>
-#include <util.h>
+#include <simulex/bit_hash.h>
+#include <simulex/util.h>
 
 /**
  * \brief Hash function fo Andrew Kensler's \c permute() function

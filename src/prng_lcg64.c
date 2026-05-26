@@ -31,7 +31,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include <prng.h>
+#include <simulex/prng.h>
 
 /**
  * 64-bit linear congruential generator pseudorandom number generator state

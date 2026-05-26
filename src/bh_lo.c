@@ -29,7 +29,7 @@
  */
 #include <stdint.h>
 
-#include <bit_hash.h>
+#include <simulex/bit_hash.h>
 
 /**
  *
