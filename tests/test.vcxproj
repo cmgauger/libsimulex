@@ -106,7 +106,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;crypt32.lib;ws2_32.lib;libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command>MSBuild /nologo $(SolutionDir)extern\libargtable3\libargtable3.sln /Property:Configuration=$(Configuration) /Property:Platform=$(Platform)
@@ -132,7 +132,7 @@ MSBuild /nologo $(SolutionDir)extern\liblogger\liblogger.sln /Property:Configura
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;crypt32.lib;ws2_32.lib;libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command>MSBuild /nologo $(SolutionDir)extern\libargtable3\libargtable3.sln /Property:Configuration=$(Configuration) /Property:Platform=$(Platform)
@@ -162,7 +162,7 @@ MSBuild /nologo $(SolutionDir)extern\liblogger\liblogger.sln /Property:Configura
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;crypt32.lib;ws2_32.lib;libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command>MSBuild /nologo $(SolutionDir)extern\libargtable3\libargtable3.sln /Property:Configuration=$(Configuration) /Property:Platform=$(Platform)
@@ -192,7 +192,7 @@ MSBuild /nologo $(SolutionDir)extern\liblogger\liblogger.sln /Property:Configura
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>advapi32.lib;crypt32.lib;ws2_32.lib;libargtable3.lib;libcrypto.lib;libcunit.lib;liblogger.lib;libz.lib;libsimulex.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PreLinkEvent>
       <Command>MSBuild /nologo $(SolutionDir)extern\libargtable3\libargtable3.sln /Property:Configuration=$(Configuration) /Property:Platform=$(Platform)
