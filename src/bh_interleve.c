@@ -111,5 +111,5 @@ interleave32(
     uint32_t y		/**<  */
 ) {
 	return ((uint64_t) interleave32(hi16(x), hi16(y)) << 32) |
-	    (interleave32(lo16(x), lo16(y)));
+	    (interleave16(lo16(x), lo16(y)));
 }
